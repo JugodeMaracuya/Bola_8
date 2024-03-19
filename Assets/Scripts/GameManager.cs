@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     public float Coins;
     public TextMeshProUGUI textoPuntosPro;
 
-    public void sumarPuntos(float Coins)
+    public void sumarPuntos(float CoinsIn)
     {
+        Debug.Log(CoinsIn);
+        this.Coins += CoinsIn;
         textoPuntosPro.text = Coins.ToString();
     }
 }

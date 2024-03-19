@@ -13,8 +13,8 @@ public class Monea : MonoBehaviour
    {
         if(collision.gameObject.CompareTag("Player"))
         {
-            ObjPuntos.GetComponent<GameManager>().Coins += puntosQueDa;
-            Destroy(gameObject);
+            ObjPuntos.GetComponent<GameManager>().sumarPuntos(puntosQueDa);
+            Destroy(this.gameObject);
         }
    }
    
