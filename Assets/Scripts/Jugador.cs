@@ -15,18 +15,30 @@ public class Jugador : MonoBehaviour
       
     }
 
+    void update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            print("Space key was released");
+            if (GetComponent<Rigidbody>() != null){
+                GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Meta")
         {
             this.enabled = false;
-            return;
+            SceneManager.LoadScene(3);
         }
         
         if(collision.gameObject.tag == "pared")
         {
             this.enabled = false;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
 
          if (collision.gameObject.CompareTag("Piso")) 
@@ -41,7 +53,7 @@ public class Jugador : MonoBehaviour
         if(collider.gameObject.tag == "pared")
         {
             this.enabled = false;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -57,15 +69,15 @@ public class Jugador : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.left * 500 * Time.deltaTime);
+            GetComponent<Rigidbody>().AddForce(Vector3.left * 600 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.right * 500 * Time.deltaTime);
+            GetComponent<Rigidbody>().AddForce(Vector3.right * 600 * Time.deltaTime);
         }
 
-        transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+        transform.Translate(Vector3.forward * 10 * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space) && puedeSaltar)
         {
